@@ -32,11 +32,12 @@ Page({
             }
           })
         }else{
-          console.log("fail to auth");
+
+          console.log("fail to auth")
         }
       },
-      fail: res => {
-        console.log("fail to set");
+      fail: res =>{
+        console.log("fail to get setting")
       }
     })
   },
