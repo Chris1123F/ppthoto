@@ -1,31 +1,48 @@
 <!--index.wxml-->
-<view class="container">
 
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
+<view class="page">
+  <view class="user-base">
+    <view class="user-info">
+      <button 
       open-type="getUserInfo" 
       bindgetuserinfo="onGetUserInfo"
       class="userinfo-avatar"
       style="background-image: url({{avatarUrl}})"
-      size="default"
-    ></button>
-    <view class="userinfo-nickname-wrapper">
-      <button class="userinfo-nickname" bindgetuserinfo="onGetUserInfo">{{userInfo.nickName}}</button>
+      size="default"></button>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </view>
+  
+  </view>
+  <view class="user-nav">
+    <view class="nav-group">
+    <view class="nav-item">
+        <navigator url="../gallery/gallery">
+          <image class="nav-icon" mode="widthFix" src="../../images/gallery.png"></image>
+          <text>个人空间</text>
+        </navigator>
+      </view>
+      <view class="nav-item">
+        <navigator url="../attention/attention">
+          <image class="nav-icon" mode="widthFix" src="../../images/attention.png"></image>
+          <text>关注</text>
+        </navigator>
+      </view>
+      <view class="nav-item">
+        <navigator url="../fans/fans">
+          <image class="nav-icon" mode="widthFix" src="../../images/fans.png"></image>
+          <text>粉丝</text>
+        </navigator>
+      </view>
     </view>
   </view>
-
-
+</view>
   <!-- 上传图片 -->
-  <view class="uploader">
+  <!-- <view class="uploader">
     <view class="uploader-text" bindtap="doUpload">
       <text>上传图片</text>
     </view>
     <view class="uploader-container" wx:if="{{imgUrl}}">
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
-  </view>
+  </view> -->
 
-
-
-</view>
