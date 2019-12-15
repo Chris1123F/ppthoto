@@ -2,17 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/storageConsole/storageConsole"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -22,5 +12,29 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+    "tabBar": {
+      "color": "#999",
+      "selectedColor": "#ffa000",
+      "list": [
+        {
+          "iconPath": "./images/photo.png",
+          "selectedIconPath": "./images/photo-active.png",
+          "pagePath": "pages/index/index",
+          "text": "美图"
+        },
+        {
+          "iconPath": "./images/message.png",
+          "selectedIconPath": "./images/message-active.png",
+          "pagePath": "pages/index/index",
+          "text": "相友圈"
+        },
+        {
+          "iconPath": "./images/me.png",
+          "selectedIconPath": "./images/me-active.png",
+          "pagePath": "pages/index/index",
+          "text": "我的"
+        }
+      ]
+    }
 }

@@ -31,7 +31,12 @@ Page({
               })
             }
           })
+        }else{
+          console.log("fail to auth");
         }
+      },
+      fail: res => {
+        console.log("fail to set");
       }
     })
   },
