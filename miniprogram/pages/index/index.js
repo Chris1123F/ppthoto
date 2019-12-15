@@ -7,7 +7,8 @@ Page({
     userInfo: {},
     logged: false,
     takeSession: false,
-    requestResult: ''
+    requestResult: '',
+    openid:''
   },
 
   onLoad: function() {
@@ -27,10 +28,12 @@ Page({
             success: res => {
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
+                userInfo: res.userInfo,
+                openid: res.openid
               })
             }
           })
+          console.log(this.data.openid)
         }else{
 
           console.log("fail to auth")
@@ -40,6 +43,7 @@ Page({
         console.log("fail to get setting")
       }
     })
+    console.log(app.globalData.openid)
   },
 
   onGetUserInfo: function(e) {
@@ -50,6 +54,17 @@ Page({
         userInfo: e.detail.userInfo
       })
     }
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
   },
 
   onGetOpenid: function() {

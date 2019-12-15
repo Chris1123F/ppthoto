@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/userConsole/userConsole",
-    "pages/photo/photo"
+    "pages/photo/photo",
+    "pages/shareCircle/shareCircle"
+
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -26,7 +28,7 @@
         {
           "iconPath": "./images/message.png",
           "selectedIconPath": "./images/message-active.png",
-          "pagePath": "pages/index/index",
+          "pagePath": "pages/shareCircle/shareCircle",
           "text": "相友圈"
         },
         {
