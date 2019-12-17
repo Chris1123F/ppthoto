@@ -9,7 +9,7 @@ Page({
     follows:[]
   },
 
-  onLoad(){
+  onShow(){
     const self = this;
   //   wx.showLoading({title: '加载中'});
     console.log(app.globalData.openid)
@@ -35,13 +35,15 @@ Page({
         openid: app.globalData.openid
       },
       success: res => {
-        console.log("2"+res)
-        console.log(res.result.data)
+        var tmp = []
         for (var index in res.result.data) {
-          this.data.follows.push(res.result.data[index].toUser)
-
+          tmp.push(res.result.data[index].toUser)
           console.log(res.result.data[index].toUser)
         }
+        self.setData({
+          follows: tmp
+        })
+        console.log(this.data.follows)
       },
       fail: err => {
         console.log("fail to get follows data")
