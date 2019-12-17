@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/photo/photo",
-    "pages/shareCircle/shareCircle"
+    "pages/shareCircle/shareCircle",
+    "pages/follow/follow",
+    "pages/fans/fans"
 
   ],
   "window": {
