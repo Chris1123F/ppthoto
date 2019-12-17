@@ -18,20 +18,20 @@ Page({
   onLoad() {
     const self = this
     // wx.showLoading({title: '加载中'});
-    // wx.cloud.callFunction({
-    //   name: "getCircle",
-    //   data: {
-    //     openid: app.globalData.openid
-    //   },
-    //   success: res => {
-    //     this.galleryData = res.result.galary
-    //     console.log(this.galleryData)
-    //   },
-    //   fail: err => {
-    //     console.log("fail to get gallery data")
-    //   }
+    wx.cloud.callFunction({
+      name: "getCircle",
+      data: {
+        openid: app.globalData.openid
+      },
+      success: res => {
+        this.galleryData = res.data.galary
+        console.log(this.galleryData)
+      },
+      fail: err => {
+        console.log("fail to get gallery data")
+      }
 
-    // })
+    })
     
   },
   onPullDownRefresh: function () {
@@ -83,6 +83,7 @@ Page({
     }
   },
 
+//调用云函数
   onGetData:function(){
     wx.cloud.callFunction({
       name: getCircle,
@@ -98,6 +99,7 @@ Page({
 
     })
   },
+  //直接调数据库
   onShow:function(){
     const self = this
     const db = wx.cloud.database()

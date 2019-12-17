@@ -6,43 +6,72 @@ Page({
    */
   data: {
     fans:[],
+    follows:[]
   },
 
   onLoad(){
     const self = this;
   //   wx.showLoading({title: '加载中'});
-  //   console.log(app.globalData.openid)
-  //   wx.cloud.callFunction({
-  //     name: "getfans",
-  //     data: {
-  //       openid: app.globalData.openid
-  //     },
-  //     success: res => {
-  //       console.log(app.globalData.openid)
-  //       this.fans = res.result.fans
-  //       console.log(this.fans)
-  //     },
-  //     fail: err => {
-  //       console.log("fail to get gallery data")
-  //     }
-
-  //   })
-  // }
-    const db = wx.cloud.database()
     console.log(app.globalData.openid)
-    db.collection('follow').where({
-      to: app.globalData.openid,
-      isFollowTo: true
-    }).get({
-      success: function (res) {
+    wx.cloud.callFunction({
+      name: "getfans",
+      data: {
+        openid: app.globalData.openid
+      },
+      success: res => {
         console.log(res)
+        console.log(res.result.data)
         self.setData({
-          fans: res.data
+          fans: res.result.data
         })
-        console.log(self.fans)
+      },
+      fail: err => {
+        console.log("fail to get fans data")
+      }
+    })
+    wx.cloud.callFunction({
+      name: "getfollows",
+      data: {
+        openid: app.globalData.openid
+      },
+      success: res => {
+        console.log("2"+res)
+        console.log(res.result.data)
+        for (var index in res.result.data) {
+          this.data.follows.push(res.result.data[index].toUser)
+
+          console.log(res.result.data[index].toUser)
+        }
+      },
+      fail: err => {
+        console.log("fail to get follows data")
       }
     })
   },
+  //   const db = wx.cloud.database()
+  //   console.log(app.globalData.openid)
+  //   const res = db.collection('follow').where({
+  //     to: app.globalData.openid,
+  //   }).get()
+
+  //   console.log(res)
+  //   console.log(res.PromiseValue.data)
+
+  //   for(var index in res.data){
+  //     fans: res.data[index].fromUser
+  //   }
+
+  //   db.collection('follow').where({
+  //     from: app.globalData.openid,
+  //   }).get({
+  //     success: function (res) {
+  //       console.log(res)
+  //       self.setData({
+  //         follows: res.data
+  //       })
+  //     }
+  //   })
+  // },
 
   follow(e){
     const self = this
