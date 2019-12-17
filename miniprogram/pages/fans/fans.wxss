@@ -27,10 +27,10 @@ page{
 }
 
 .fans-list button{
-  width: 40%;
+  width: 28%;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-  margin-right: 50rpx;
+  margin-right: 25rpx;
   background-color: #ffa000;
   color: black;
   border-radius: 98rpx;

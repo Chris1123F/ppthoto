@@ -42,6 +42,53 @@ Page({
         console.log(self.fans)
       }
     })
+  },
+
+  follow(e){
+    const self = this
+    // let oldData = self.data.fans.slice()
+    console.log(e.target.dataset.item)
+    // const db = wx.cloud.database()
+    if (e.target.dataset.item.isFollowFrom==true){
+      // self.data.fans[0].isFollowFrom = false
+      console.log("unfollow")
+      // const db = wx.cloud.database()
+      // db.collection('follow').where({
+      //   _id: e.target.dataset.item._id
+      // }).update({
+      //   data: {
+      //     isFollowFrom: false
+      //   }
+      // })
+      wx.cloud.callFunction({
+        name: "unfollow",
+        data: {
+          id: e.target.dataset.item._id
+        },
+        success: res => {
+          console.log("success")
+        },
+        fail: err => {
+          console.log("fail")
+        }
+      })
+    }else{
+      console.log("follow")
+      console.log(e.target.dataset.item._id)
+      wx.cloud.callFunction({
+        name: "follow",
+        data: {
+          id: e.target.dataset.item._id
+        },
+        success: res => {
+          console.log("success")
+        },
+        fail: err => {
+          console.log("fail")
+        }
+      })
+    }
+
   }
 
 })

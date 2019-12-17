@@ -2,7 +2,7 @@
   <view wx:if="{{fans.length > 0}}">
     <view wx:for='{{fans}}' wx:for-item="fanItem" class="fans-list">
         <text>{{fanItem.fromUser}}</text>
-        <button bindtap="follow">{{fanItem.isFollowFrom?'取消关注':'关注'}}</button>
+        <button data-item="{{fanItem}}" bindtap="follow">{{fanItem.isFollowFrom?'取消关注':'关注'}}</button>
     </view>
   </view>
   <view wx:else class="empty-text">您还没有粉丝！</view>
