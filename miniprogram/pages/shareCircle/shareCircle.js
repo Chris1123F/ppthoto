@@ -1,5 +1,4 @@
 var app = getApp()
-var that
 Page({
   data: {
     galleryData: [
@@ -11,6 +10,7 @@ Page({
     isEnd: false,
     photoWidth: wx.getSystemInfoSync().windowWidth / 5,
 
+    _id:null,
     popTop: 0, //弹出点赞评论框的位置
     popWidth: 0, //弹出框宽度
     isShow: true, //判断是否显示弹出框
@@ -117,17 +117,19 @@ Page({
   TouchDiscuss: function (e) {
     // this.data.isShow = !this.data.isShow
     // 动画
+    console.log(e)
     var animation = wx.createAnimation({
       duration: 300,
       timingFunction: 'linear',
       delay: 0,
     })
-
+    var that = this
     if (that.data.isShow == false) {
       that.setData({
         popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
         popWidth: 0,
-        isShow: true
+        isShow: true,
+        _id: e.target.dataset._id
       })
 
       // 0.3秒后滑动
@@ -149,7 +151,8 @@ Page({
       that.setData({
         popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
         popWidth: 0,
-        isShow: false
+        isShow: false,
+        _id: e.target.dataset._id
       })
     }
   },

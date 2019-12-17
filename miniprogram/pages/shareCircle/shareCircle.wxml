@@ -1,7 +1,7 @@
 <!-- 仿微信朋友圈 -->
 <scroll-view class='page'>
   <!-- 列表 -->
-  <view class='CircleList' wx:for='{{galleryData}}' wx:for-item="groupItem">
+  <view class='CircleList' wx:for='{{galleryData}}' wx:for-item="groupItem" wx:key="unique">
     <!-- 头像、昵称、内容 -->
     <view class='body-view'>
       <!-- 头像 -->
@@ -19,7 +19,7 @@
         </view>
         <!-- 图片 -->
         <view class='photo-view'>
-          <view class='photo' wx:for='{{resource}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px'>
+          <view class='photo' wx:for='{{groupItem.photo}}' wx:for-item="item" wx:key="unique" wx:keystyle='width:{{photoWidth}}px;height:{{photoWidth}}px'>
             <image bindtap='LookPhoto' data-photUrl='{{item}}' src='{{item}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px'></image>
           </view>
         </view>
@@ -27,7 +27,7 @@
         <view class='TDD-view'>
           <label>{{groupItem.date}}</label>
           <button bindtap='delete'>删除</button>
-          <image data-isShow='{{isShow}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'></image>
+          <image data-isShow='{{isShow}}' data-_id ='{{groupItem._id}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'></image>
         </view>
 
         <!-- 点赞 -->
@@ -38,14 +38,14 @@
 
           <!-- 点赞 -->
           <view class='zan-bg-view'>
-            <view class='zan-user-view' wx:for='{{groupItem.star}}' wx:for-item="item">
+            <view class='zan-user-view' wx:for='{{groupItem.star}}' wx:for-item="item" wx:key="unique">
               <label bindtap='TouchZanUser' data-name='{{item}}' class='zan-user'>{{item}},</label>
             </view>
           </view>
           <view class='line'></view>
           <!-- 评论 -->
           <view class='discuss-view'>
-            <view class='discuss' wx:for='{{groupItem.comments}}' wx:for-item="item">
+            <view class='discuss' wx:for='{{groupItem.comments}}' wx:for-item="item" wx:key="unique">
               <label bindtap='TouchZanUser' data-name='{{item.username}}' class='discuss-user'>{{item.username}}：</label>
               <label class='content'>{{item.comment}}</label>
             </view>
@@ -55,9 +55,14 @@
 
     </view>
   </view>
+  <!-- 评论按钮弹出框 -->
+  <view animation="{{animation}}" class='pop-up-box' style='top:{{popTop}}px;width: {{popWidth}}px;'>
+    <view>
+      <text class="dianzan" bindtap="bindDianZan" hidden="{{isShow}}">点赞</text> 
+    </view>
+    <view>
+        <text class="pinglun" bindtap="bindPingLunA" hidden="{{isShow}}">评论</text>
+    </view>
+  </view>
 </scroll-view>
 
-<!-- 评论按钮弹出框 -->
-<view animation="{{animation}}" class='pop-up-box' style='top:{{popTop}}px;width: {{popWidth}}px;'>
-
-</view>
