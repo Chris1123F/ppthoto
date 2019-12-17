@@ -6,7 +6,8 @@ Page({
    */
   data: {
     fans:[],
-    follows:[]
+    follows:[],
+    tempID: ""
   },
 
   onShow(){
@@ -79,8 +80,9 @@ Page({
     const self = this
     // let oldData = self.data.fans.slice()
     console.log(e.target.dataset.item)
-    // const db = wx.cloud.database()
-    if (e.target.dataset.item.isFollowFrom==true){
+
+    
+    if (self.data.follows.indexOf(e.target.dataset.item.fromUser)>-1){
       // self.data.fans[0].isFollowFrom = false
       console.log("unfollow")
       // const db = wx.cloud.database()
@@ -91,18 +93,38 @@ Page({
       //     isFollowFrom: false
       //   }
       // })
+      console.log(e.target.dataset.item.from)
+      //得到主键
       wx.cloud.callFunction({
-        name: "unfollow",
+        name: "get_id",
         data: {
-          id: e.target.dataset.item._id
+          toid: e.target.dataset.item.from,
+          fromid: e.target.dataset.item.to
         },
         success: res => {
-          console.log("success")
+          var temp = res.result.data[0]._id
+          // self.setData({
+          //   tempID : tmp
+          // })
+          wx.cloud.callFunction({
+            name: "unfollow",
+            data: {
+              id: temp
+            },
+            success: res => {
+              console.log("success")
+            },
+            fail: err => {
+              console.log("fail")
+            }
+          })
         },
         fail: err => {
-          console.log("fail")
+          console.log("get_id fail")
         }
       })
+      console.log(this.data.tempID)
+      
     }else{
       console.log("follow")
       console.log(e.target.dataset.item._id)
