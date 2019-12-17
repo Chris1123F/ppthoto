@@ -10,7 +10,7 @@ exports.main = async (event, context) => {
   const _ = db.command
   return await db.collection('share').doc(event._id).update({
     data: {
-      star: _.addToSet(event.username)
+      star: _.pull(event.username)
     }
   })
 }

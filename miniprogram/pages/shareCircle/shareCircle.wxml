@@ -1,4 +1,5 @@
 <!-- 仿微信朋友圈 -->
+
 <scroll-view class='page'>
   <!-- 列表 -->
   <view class='CircleList' wx:for='{{galleryData}}' wx:for-item="groupItem" wx:key="unique">
@@ -58,10 +59,10 @@
   <!-- 评论按钮弹出框 -->
   <view animation="{{animation}}" class='pop-up-box' style='top:{{popTop}}px;width: {{popWidth}}px;'>
     <view>
-      <text class="dianzan" bindtap="bindDianZan" hidden="{{isShow}}">点赞</text> 
+      <text class="dianzan" bindtap="star" hidden="{{isShow}}">点赞</text> 
     </view>
     <view>
-        <text class="pinglun" bindtap="bindPingLunA" hidden="{{isShow}}">评论</text>
+        <text class="pinglun" bindtap="comment" hidden="{{isShow}}">评论</text>
     </view>
   </view>
 </scroll-view>

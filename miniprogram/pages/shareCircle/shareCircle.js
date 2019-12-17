@@ -18,20 +18,6 @@ Page({
   onLoad() {
     const self = this
     // wx.showLoading({title: '加载中'});
-    wx.cloud.callFunction({
-      name: "getCircle",
-      data: {
-        openid: app.globalData.openid
-      },
-      success: res => {
-        this.galleryData = res.data.galary
-        console.log(this.galleryData)
-      },
-      fail: err => {
-        console.log("fail to get gallery data")
-      }
-
-    })
     
   },
   onPullDownRefresh: function () {
@@ -112,6 +98,13 @@ Page({
         console.log(app.globalData.galleryData)
       }
     })
+    wx.getUserInfo({
+      success: res => {
+        this.setData({
+          userInfo: res.userInfo,
+        })
+      }
+    })
   },
   // 点击了点赞评论
   TouchDiscuss: function (e) {
@@ -178,4 +171,59 @@ Page({
       title: '删除成功',
     })
   },
+
+  star:function(){
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'star',
+      // 传给云函数的参数
+      data: {
+        _id: this.data._id,
+        username:this.data.userInfo.nickName
+      },
+      success: function (res) {
+        console.log(res) // 3
+        wx.showToast({
+          title: '点赞成功',
+        })
+      },
+      fail: console.error
+    })
+    var animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: 'linear',
+      delay: 0,
+    })
+    this.setData({
+      popWidth: 0,
+      isShow: false,
+    })
+  },
+  unStar: function () {
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'unstar',
+      // 传给云函数的参数
+      data: {
+        _id: this.data._id,
+        username: this.data.userInfo.nickName
+      },
+      success: function (res) {
+        console.log(res) // 3
+        wx.showToast({
+          title: '取消点赞成功',
+        })
+      },
+      fail: console.error
+    })
+    var animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: 'linear',
+      delay: 0,
+    })
+    this.setData({
+      popWidth: 0,
+      isShow: false,
+    })
+  }
 })
