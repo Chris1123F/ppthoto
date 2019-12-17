@@ -1,4 +1,5 @@
-const app = getApp();
+var app = getApp()
+var that
 Page({
   data: {
     galleryData: [
@@ -7,10 +8,15 @@ Page({
     cursor: 1,
     tips: '载入中...',
     isLoading: false,
-    isEnd: false
+    isEnd: false,
+    photoWidth: wx.getSystemInfoSync().windowWidth / 5,
+
+    popTop: 0, //弹出点赞评论框的位置
+    popWidth: 0, //弹出框宽度
+    isShow: true, //判断是否显示弹出框
   },
   onLoad() {
-    const self = this;
+    const self = this
     // wx.showLoading({title: '加载中'});
     // wx.cloud.callFunction({
     //   name: "getCircle",
@@ -26,15 +32,6 @@ Page({
     //   }
 
     // })
-    const db=wx.cloud.database()
-    console.log(app.globalData.openid)
-    db.collection('share').where({
-      openID: app.globalData.openid
-    }).get({
-      success: function(res){
-        console.log(res)
-      }
-    })
     
   },
   onPullDownRefresh: function () {
@@ -100,6 +97,80 @@ Page({
       }
 
     })
+  },
+  onShow:function(){
+    const self = this
+    const db = wx.cloud.database()
+    db.collection('share').get({
+      success: function (res) {
+        self.setData({
+          galleryData: res.data
+        })
+        app.globalData.galleryData = res.data
+        console.log(app.globalData.galleryData)
+      }
+    })
+  },
+  // 点击了点赞评论
+  TouchDiscuss: function (e) {
+    // this.data.isShow = !this.data.isShow
+    // 动画
+    var animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: 'linear',
+      delay: 0,
+    })
 
-  }
+    if (that.data.isShow == false) {
+      that.setData({
+        popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
+        popWidth: 0,
+        isShow: true
+      })
+
+      // 0.3秒后滑动
+      setTimeout(function () {
+        animation.width(0).opacity(1).step()
+        that.setData({
+          animation: animation.export(),
+        })
+      }, 100)
+    } else {
+      // 0.3秒后滑动
+      setTimeout(function () {
+        animation.width(120).opacity(1).step()
+        that.setData({
+          animation: animation.export(),
+        })
+      }, 100)
+
+      that.setData({
+        popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
+        popWidth: 0,
+        isShow: false
+      })
+    }
+  },
+  // 点击图片进行大图查看
+  LookPhoto: function (e) {
+    wx.previewImage({
+      current: e.currentTarget.dataset.photurl,
+      urls: this.data.resource,
+    })
+  },
+
+  // 点击点赞的人
+  TouchZanUser: function (e) {
+    wx.showModal({
+      title: e.currentTarget.dataset.name,
+      showCancel: false
+    })
+  },
+
+  // 删除朋友圈
+  delete: function () {
+    wx.showToast({
+      title: '删除成功',
+    })
+  },
 })
