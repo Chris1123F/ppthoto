@@ -1,35 +1,69 @@
-<view class="page">
-  <view wx:if="{{galleryData.length > 0}}" class="gallery-list">
-    <view wx:for="{{galleryData}}" wx:for-index="idx" wx:for-item="groupItem" wx:key="groupItem.id" class="gallery-item">
-      <navigator url="../details/details?id={{groupItem._id}}">
-        <view class="item-title">{{groupItem.title}}</view>
-        <view wx:if="{{groupItem.photos.length > 0}}" class="item-summy">
-          <view wx:if="{{index < 3}}" wx:for="{{groupItem.photos}}" wx:key="{{index}}" class="thumb">
-            <image mode="aspectFill" src="{{item}}"></image>
+<!-- 仿微信朋友圈 -->
+
+<scroll-view class='page'>
+  <!-- 列表 -->
+  <view class='CircleList' wx:for='{{galleryData}}' wx:for-item="groupItem" wx:key="unique">
+    <!-- 头像、昵称、内容 -->
+    <view class='body-view'>
+      <!-- 头像 -->
+      <view class='left-view'>
+        <image class='user-icon' src='{{groupItem.icon}}'></image>
+      </view>
+      <view class='right-view'>
+        <!-- 昵称 -->
+        <view class='user-name-view'>
+          <label class='user-name'>{{groupItem.username}}</label>
+        </view>
+        <!-- 内容 -->
+        <view class='user-content-view'>
+          <text class='user-content'>{{groupItem.content}}</text>
+        </view>
+        <!-- 图片 -->
+        <view class='photo-view'>
+          <view class='photo' wx:for='{{groupItem.photo}}' wx:for-item="item" wx:key="unique" wx:keystyle='width:{{photoWidth}}px;height:{{photoWidth}}px'>
+            <image bindtap='LookPhoto' data-photUrl='{{item}}' src='{{item}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px'></image>
           </view>
         </view>
-        <view class="item-status">
-          <view class="author-info">
-            <image mode="widthFix" src="{{groupItem.avatarUrl}}"></image>
-            <text>{{groupItem.nickName}}</text>
+        <!-- 时间、删除按钮、点赞评论按钮 -->
+        <view class='TDD-view'>
+          <label>{{groupItem.date}}</label>
+          <button bindtap='delete'>删除</button>
+          <image data-isShow='{{isShow}}' data-_id ='{{groupItem._id}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'></image>
+        </view>
+
+        <!-- 点赞 -->
+        <view class='zan-view'>
+          <view class='trigon-view'>
+            <image mode='aspectFill' class='trigon' src='/images/trigon.png'></image>
           </view>
-          <view class="stat-group">
-            <view class="create-time">
-              <image class="stat-icon" mode="widthFix" src="../../images/clock.png"></image>
-              <text class="small-font">{{groupItem.createTime}}</text>
+
+          <!-- 点赞 -->
+          <view class='zan-bg-view'>
+            <view class='zan-user-view' wx:for='{{groupItem.star}}' wx:for-item="item" wx:key="unique">
+              <label bindtap='TouchZanUser' data-name='{{item}}' class='zan-user'>{{item}},</label>
             </view>
-            <view class="views-count">
-              <image class="stat-icon" mode="widthFix" src="../../images/eye.png"></image>
-              <text>{{groupItem.views || 0}}</text>
-            </view>
-            <view class="liking-count">
-              <image class="stat-icon" mode="widthFix" src="../../images/like.png"></image>
-              <text>{{groupItem.favorer.length || 0}}</text>
+          </view>
+          <view class='line'></view>
+          <!-- 评论 -->
+          <view class='discuss-view'>
+            <view class='discuss' wx:for='{{groupItem.comments}}' wx:for-item="item" wx:key="unique">
+              <label bindtap='TouchZanUser' data-name='{{item.username}}' class='discuss-user'>{{item.username}}：</label>
+              <label class='content'>{{item.comment}}</label>
             </view>
           </view>
         </view>
-      </navigator>
+      </view>
+
     </view>
-    <!-- <view class="loading-hint" wx:if="{{isLoading}}">{{tips}}</view> -->
   </view>
-</view>
+  <!-- 评论按钮弹出框 -->
+  <view animation="{{animation}}" class='pop-up-box' style='top:{{popTop}}px;width: {{popWidth}}px;'>
+    <view>
+      <text class="dianzan" bindtap="star" hidden="{{isShow}}">点赞</text> 
+    </view>
+    <view>
+        <text class="pinglun" bindtap="comment" hidden="{{isShow}}">评论</text>
+    </view>
+  </view>
+</scroll-view>
+

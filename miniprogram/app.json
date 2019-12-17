@@ -4,7 +4,13 @@
     "pages/userConsole/userConsole",
     "pages/photo/photo",
     "pages/shareCircle/shareCircle",
+<<<<<<< HEAD
     "pages/modifyPhoto/modify"
+=======
+    "pages/follow/follow",
+    "pages/fans/fans"
+
+>>>>>>> 21876b21be9a1006e7c0137887ca88bad11292a3
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,0 +1,19 @@
+<wxs module="m1">
+  function fn(arr, arg) {
+    var result = {
+      indexOf: false
+    }
+    result.indexOf = arr.indexOf(arg) > -1;
+    return result;
+  }
+  module.exports.fn = fn;
+</wxs>
+<scroll-view class="page">
+  <view wx:if="{{fans.length > 0}}">
+    <view wx:for='{{fans}}' wx:for-item="fanItem" class="fans-list">
+        <text>{{fanItem.fromUser}}</text>
+        <button data-item="{{fanItem}}" bindtap="follow">{{m1.fn(follows,fanItem.fromUser).indexOf ? "取消关注" : "关注"}}</button>
+    </view>
+  </view>
+  <view wx:else class="empty-text">您还没有粉丝！</view>
+</scroll-view>

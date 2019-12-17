@@ -22,7 +22,7 @@
         </navigator>
       </view>
       <view class="nav-item">
-        <navigator url="../attention/attention">
+        <navigator url="../follow/follow">
           <image class="nav-icon" mode="widthFix" src="../../images/attention.png"></image>
           <text>关注</text>
         </navigator>
