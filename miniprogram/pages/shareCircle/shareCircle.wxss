@@ -1,6 +1,6 @@
 /* pages/CircleFriends/CircleFriends.wxss */
 page{
-  background: whitesmoke;
+  background-color:  #ffd999;
 }
 
 .page{
@@ -10,6 +10,8 @@ page{
 
 /* 列表 */
 .CircleList{
+  padding: 20rpx;
+  
   background: white;
   margin-bottom: 1px;
   border-bottom: 1px solid whitesmoke;

@@ -5,20 +5,24 @@
     "pages/photo/photo",
     "pages/shareCircle/shareCircle",
     "pages/follow/follow",
-    "pages/fans/fans"
+    "pages/fans/fans",
+    "pages/splicePhoto/splice",
+    "pages/spliceMenu/spliceMenu",
+    "pages/emotionChoose/emotionChoose",
+    "pages/emotionEdit/emotionEdit"
 
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#ffa000",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#ffa000",
     "navigationBarTitleText": "pphoto",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "tabBar": {
-    "color": "#999",
+    "color": "#a9b7b7" ,
     "selectedColor": "#ffa000",
     "list": [
       {
