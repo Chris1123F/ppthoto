@@ -1,0 +1,45 @@
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.user-base{
+  padding: 1px 0;
+  background-color: #ffa000;
+  color: #fff;
+}
+.user-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5em 0 0.5em 0;
+}
+.userinfo-avatar{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  border:0px solid rgba(255,255,255,0.6);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.userinfo-avatar[size] {
+  margin-top: 20rpx;
+  border-radius: 50%;
+  width: 160rpx;
+  height: 160rpx;
+  border:0px solid rgba(255,255,255,0.6);
+}
+.userinfo-nickname {
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: black;
+  background-color: #ffa000;
+  background-size: cover;
+  align-items: center;
+  /* padding-left: 0;
+  margin-left: 10px; */
+}
+.userinfo-all{
+  display: flex;
+}

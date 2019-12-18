@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="user-base">
+    <view class="user-info">
+      <image
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+      size="default"></image>
+      <view class="userinfo-all">
+        <text class="userinfo-nickname">{{toName}}</text>
+        <button bindtap="changeStatus">{{isFollow ? "取消关注" : "关注"}}</button>
+      </view>
+    </view>
+  </view>
+</view>
