@@ -1,8 +1,8 @@
 <scroll-view class="page">
-  <view wx:if="{{fans.length > 0}}">
-    <view wx:for='{{fans}}' wx:for-item="fanItem" class="fans-list">
-        <text>{{fanItem.fromUser}}</text>
-        <button bindtap="changeState" wx:for-index="index" >{{fanItem.isFollowTo?'取消关注':'关注'}}</button>
+  <view wx:if="{{follows.length > 0}}">
+    <view wx:for='{{follows}}' wx:for-item="followItem" class="follows-list">
+        <text>{{followItem.toUser}}</text>
+        <button bindtap="unfollow" data-item="{{followItem}}">取消关注</button>
     </view>
   </view>
   <view wx:else class="empty-text">您还没有关注！</view>
