@@ -90,16 +90,18 @@ Page({
   chooseFrame(e) {
     var self = this
     wx.getImageInfo({
-      src: '../../image/frame/' + e.currentTarget.dataset.src,
+      src: '../../images/frame/' + e.currentTarget.dataset.src,
       success: function (res) {
-        var initRatio = res.width / (750 * self.deviceRatio) //保证宽度全显
+        var initRatio = res.width / (750 * self.deviceRatio) 
+        //保证宽度全显
         //图片显示大小
-        self.frameWidth = (res.width / initRatio) //100%
+        self.frameWidth = (res.width / initRatio) 
+        //100%
         self.frameHeight = (res.height / initRatio)
         self.setData({
           frameHeight: self.frameHeight,
           isFrameChoose: false,
-          frameSrc: '../../image/frame/' + e.currentTarget.dataset.src,
+          frameSrc: '../../images/frame/' + e.currentTarget.dataset.src,
           readuSave: true
         })
       }
@@ -124,12 +126,14 @@ Page({
           src: res.tempFilePaths[0],
           success: function (re) {
             self.frameHeight = self.frameHeight ? self.frameHeight : 1000 * self.deviceRatio
-            self.initRatio = re.height / self.frameHeight  //转换为了px 图片原始大小/显示大小
+            self.initRatio = re.height / self.frameHeight  
+            //转换为了px 图片原始大小/显示大小
             if (self.initRatio < re.width / (750 * self.deviceRatio)) {
               self.initRatio = re.width / (750 * self.deviceRatio)
             }
             //图片显示大小
-            self.scaleWidth = (re.width / self.initRatio) //100%
+            self.scaleWidth = (re.width / self.initRatio) 
+            //100%
             self.scaleHeight = (re.height / self.initRatio)
             self.startX = 750 * self.deviceRatio / 2 - self.scaleWidth / 2;
             self.startY = self.frameHeight / 2 - self.scaleHeight / 2;
@@ -269,9 +273,11 @@ function getImageInfo(self, tempCtx, i, fn) {
     wx.getImageInfo({
       src: self.data.longImageSrcs[i],
       success: function (res) {
-        var initRatio = res.width / (750 * self.deviceRatio) // 宽度全显 图片原始大小/显示大小
+        var initRatio = res.width / (750 * self.deviceRatio) 
+        // 宽度全显 图片原始大小/显示大小
         //图片显示大小
-        var scaleWidth = (res.width / initRatio) //100%
+        var scaleWidth = (res.width / initRatio) 
+        //100%
         var scaleHeight = (res.height / initRatio)
         var startX = 0;
         var startY = self.data.totalHeight;
