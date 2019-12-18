@@ -4,12 +4,14 @@
     "pages/userConsole/userConsole",
     "pages/photo/photo",
     "pages/shareCircle/shareCircle",
+    "pages/modifyPhoto/modify",
     "pages/follow/follow",
     "pages/fans/fans",
     "pages/splicePhoto/splice",
     "pages/spliceMenu/spliceMenu",
     "pages/emotionChoose/emotionChoose",
-    "pages/emotionEdit/emotionEdit"
+    "pages/emotionEdit/emotionEdit",
+    "pages/publish/publish"
 
   ],
   "window": {

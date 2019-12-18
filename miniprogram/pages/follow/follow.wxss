@@ -1,0 +1,37 @@
+page{
+  background: whitesmoke;
+}
+
+.page{
+  width: 100%;
+  /* overflow-x: hidden */
+}
+
+/* 列表 */
+.follows-list{
+  display: flex;
+  background: white;
+  margin-bottom: 1px;
+  border-bottom: 1px solid whitesmoke;
+  border-top: 1px solid whitesmoke;
+}
+
+.follows-list text{
+  display: flex;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 18px;
+  color: rgb(88, 103, 138);
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+}
+
+.follows-list button{
+  width: 28%;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  margin-right: 25rpx;
+  background-color: #ffa000;
+  color: black;
+  border-radius: 98rpx;
+}

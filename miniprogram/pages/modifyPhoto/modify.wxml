@@ -1,0 +1,4 @@
+<!--miniprogram/pages/modifyPhoto/modify.wxml-->
+<text>miniprogram/pages/modifyPhoto/modify.wxml</text>
+<view>{{ msg }}</view>
+<button bindtap="clickMe">点击我</button>
