@@ -73,16 +73,20 @@
           <text class="pinglun" bindtap="comment" hidden="{{isShow}}">评论</text>
       </view>
     </view>
-  </view>
-  <view class="release" hidden="{{!releaseFocus}}">
-      <textarea class="text"
-            fixed="{{true}}" 
-            show-confirm-bar = "{{false}}" 
-            cursor-spacing="15" 
-            auto-height 
-            focus="{{releaseFocus}}"
-            placeholder="回复"></textarea>
-      <view class="submit">发送</view>
+    <form bindsubmit="bindFormSubmit">
+      <view class="release" hidden="{{!releaseFocus}}">
+        <textarea class="text"
+              fixed="{{true}}" 
+              show-confirm-bar = "{{false}}" 
+              cursor-spacing="15" 
+              auto-height
+              value="{{text}}" 
+              focus="{{releaseFocus}}"
+              placeholder="回复" 
+              name="textarea"></textarea>
+        <button class="submit" form-type="submit" data-_id ='{{groupItem._id}}'>发送</button>
+      </view>
+    </form>
   </view>
 </scroll-view>
 
