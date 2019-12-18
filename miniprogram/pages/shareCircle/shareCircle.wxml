@@ -1,5 +1,14 @@
 <!-- 仿微信朋友圈 -->
-
+<wxs module="star">
+  function fn(arr, arg) {
+    var result = {
+      indexOf: false
+    }
+    result.indexOf = arr.indexOf(arg) > -1;
+    return result;
+  }
+  module.exports.fn = fn;
+</wxs>
 <scroll-view class='page'>
   <!-- 列表 -->
   <view class='CircleList' wx:for='{{galleryData}}' wx:for-item="groupItem" wx:key="unique">
@@ -53,17 +62,31 @@
           </view>
         </view>
       </view>
-
     </view>
-  </view>
-  <!-- 评论按钮弹出框 -->
-  <view animation="{{animation}}" class='pop-up-box' style='top:{{popTop}}px;width: {{popWidth}}px;'>
-    <view>
-      <text class="dianzan" bindtap="star" hidden="{{isShow}}">点赞</text> 
+      <!-- 评论按钮弹出框 -->
+    <view animation="{{animation}}" class='pop-up-box' style='top:{{popTop}}px;width: {{popWidth}}px;'>
+      <view hidden="{{isShow}}">
+        <text class="dianzan" bindtap="unStar" hidden="{{!star.fn(groupItem.star,userInfo.nickName).indexOf }}">取消点赞</text>
+        <text class="dianzan" bindtap="star" hidden="{{star.fn(groupItem.star,userInfo.nickName).indexOf }}">点赞</text> 
+      </view>
+      <view>
+          <text class="pinglun" bindtap="comment" hidden="{{isShow}}">评论</text>
+      </view>
     </view>
-    <view>
-        <text class="pinglun" bindtap="comment" hidden="{{isShow}}">评论</text>
-    </view>
+    <form bindsubmit="bindFormSubmit">
+      <view class="release" hidden="{{!releaseFocus}}">
+        <textarea class="text"
+              fixed="{{true}}" 
+              show-confirm-bar = "{{false}}" 
+              cursor-spacing="15" 
+              auto-height
+              value="{{text}}" 
+              focus="{{releaseFocus}}"
+              placeholder="回复" 
+              name="textarea"></textarea>
+        <button class="submit" form-type="submit" data-_id ='{{groupItem._id}}'>发送</button>
+      </view>
+    </form>
   </view>
 </scroll-view>
 

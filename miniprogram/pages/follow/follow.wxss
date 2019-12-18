@@ -8,7 +8,7 @@ page{
 }
 
 /* 列表 */
-.fans-list{
+.follows-list{
   display: flex;
   background: white;
   margin-bottom: 1px;
@@ -16,7 +16,7 @@ page{
   border-top: 1px solid whitesmoke;
 }
 
-.fans-list text{
+.follows-list text{
   display: flex;
   height: 50rpx;
   line-height: 50rpx;
@@ -26,11 +26,11 @@ page{
   margin-left: 20rpx;
 }
 
-.fans-list button{
-  width: 40%;
+.follows-list button{
+  width: 28%;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
-  margin-right: 50rpx;
+  margin-right: 25rpx;
   background-color: #ffa000;
   color: black;
   border-radius: 98rpx;

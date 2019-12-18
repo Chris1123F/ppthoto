@@ -6,14 +6,19 @@ const wxContext = cloud.getWXContext()
 const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
-  
-  
-  console.log("test")
-  return await db.collection('follow').doc("b4bbd54c-6c59-4275-b70a-4bac254cfdcf").update({
-    data: {
-      isFollowFrom: true
-    }
-  })
+  try {
+    return db.collection('follow').add({
+      // data 字段表示需新增的 JSON 数据
+      data: {
+        from: event.fromid,
+        to: event.toid,
+        fromUser: event.fUser,
+        toUser: event.tUser
+      }
+    })
+  } catch (e) {
+    console.error(e)
+  }
   // return {
   //   event,
   //   openid: wxContext.OPENID,

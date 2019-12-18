@@ -81,6 +81,37 @@ function tapBtn(e, _this, pageType) {
         ...c,
       });
       return;
+    // 裁剪
+    case 'crop':
+      if (pageType === 1) {
+        c.canvasHeight = (!_this.data.color) ? 205 + _this.data.w : 50;
+        if (_this.data.pageType === 'whiteBoard') {
+          c.canvasHeight += 64;
+        }
+      } else if (pageType === 2) {
+        c.canvasHeightLen = (!_this.data.color) ? Math.min(_this.data.canvasHeight, _this.data.windowHeight - _this.data.w - 205) : 0;
+      }
+      _this.setData({
+        width: false,
+        color: !_this.data.color,
+        clear: false,
+        ...c,
+      });
+      return;
+    // 添加文字
+    case 'text':
+      if (pageType === 1) {
+        c.canvasHeight = (!_this.data.clear) ? 120 + _this.data.w : 50;
+      } else if (pageType === 2) {
+        c.canvasHeightLen = (!_this.data.clear) ? Math.min(_this.data.canvasHeight, _this.data.windowHeight - _this.data.w - 120) : 0;
+      }
+      _this.setData({
+        width: false,
+        color: false,
+        clear: !_this.data.clear,
+        ...c,
+      })
+      return;
     // 清空按钮
     case 'clear':
       if (pageType === 1) {

@@ -7,8 +7,8 @@ cloud.init()
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const db = cloud.database()
-  return await db.collection('follow').where({
-    from: event.toid,
-    to: event.fromid,
+  return db.collection('follow').where({
+    from: event.fromid,
+    to: event.toid,
   }).get()
 }

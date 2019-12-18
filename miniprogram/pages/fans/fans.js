@@ -37,6 +37,7 @@ Page({
       },
       success: res => {
         var tmp = []
+        console.log(res.result.data)
         for (var index in res.result.data) {
           tmp.push(res.result.data[index].toUser)
           console.log(res.result.data[index].toUser)
@@ -51,30 +52,6 @@ Page({
       }
     })
   },
-  //   const db = wx.cloud.database()
-  //   console.log(app.globalData.openid)
-  //   const res = db.collection('follow').where({
-  //     to: app.globalData.openid,
-  //   }).get()
-
-  //   console.log(res)
-  //   console.log(res.PromiseValue.data)
-
-  //   for(var index in res.data){
-  //     fans: res.data[index].fromUser
-  //   }
-
-  //   db.collection('follow').where({
-  //     from: app.globalData.openid,
-  //   }).get({
-  //     success: function (res) {
-  //       console.log(res)
-  //       self.setData({
-  //         follows: res.data
-  //       })
-  //     }
-  //   })
-  // },
 
   follow(e){
     const self = this
@@ -93,7 +70,7 @@ Page({
       //     isFollowFrom: false
       //   }
       // })
-      console.log(e.target.dataset.item.from)
+      // console.log(e.target.dataset.item.from)
       //得到主键
       wx.cloud.callFunction({
         name: "get_id",
@@ -112,10 +89,11 @@ Page({
               id: temp
             },
             success: res => {
-              console.log("success")
+              console.log("unfollow success")
+              self.onShow()
             },
             fail: err => {
-              console.log("fail")
+              console.log("unfollow fail")
             }
           })
         },
@@ -131,13 +109,17 @@ Page({
       wx.cloud.callFunction({
         name: "follow",
         data: {
-          id: e.target.dataset.item._id
+          fromid: e.target.dataset.item.to,
+          toid: e.target.dataset.item.from,
+          fUser: e.target.dataset.item.toUser,
+          tUser: e.target.dataset.item.fromUser
         },
         success: res => {
-          console.log("success")
+          console.log("follow success")
+          self.onShow()
         },
         fail: err => {
-          console.log("fail")
+          console.log("follow fail")
         }
       })
     }

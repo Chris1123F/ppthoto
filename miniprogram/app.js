@@ -15,9 +15,25 @@ App({
       })
     }
 
+<<<<<<< HEAD
     this.globalData = {
       userInfo: null,
       recordPoints: [],
     }
   }
+=======
+
+    this.globalData.myDevice = wx.getSystemInfoSync()
+
+    for (var i = 0; i < 156; i++) {
+      this.globalData.imgUrl[i] = 'https://qcloudtest-1256525699.cos.ap-guangzhou.myqcloud.com/emotion/' + (i + 1) + '.png'
+    }
+     
+  },
+   globalData: {
+     userInfo: null,
+    myDevice: null,
+    imgUrl: [],
+   }
+>>>>>>> 4a9d4f91547a662583913d9d5bc3ca1a406bd66b
 })

@@ -5,30 +5,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fans: [],
+    follows: [],
   },
 
-  onLoad() {
+  onShow() {
     const self = this;
     //获取关注列表
-    const db = wx.cloud.database()
-    db.collection('follow').where({
-      from: app.globalData.openid,
-      isFollowFrom: true
-    }).get({
-      success: function (res) {
-        // const count =0
-        // res.data.map(ele=>ele.setData({'index':count++}))
+    wx.cloud.callFunction({
+      name: "getfollows",
+      data: {
+        openid: app.globalData.openid
+      },
+      success: res => {
+        console.log(res)
+        console.log(res.result.data)
         self.setData({
-          fans: res.data
+          follows: res.result.data
         })
+      },
+      fail: err => {
+        console.log("fail to get follows data")
       }
     })
+    
   },
 
-  changeState(e) {
+  unfollow(e){
+    const self = this
+    console.log(e.target.dataset.item)
+    console.log("unfollow")
 
-    console.log(this.data.fans)
+    wx.cloud.callFunction({
+      name: "unfollow",
+      data: {
+        id: e.target.dataset.item._id
+      },
+      success: res => {
+        console.log("unfollow success")
+        self.onShow()
+      },
+      fail: err => {
+        console.log("unfollow fail")
+      }
+    })
   }
 
 

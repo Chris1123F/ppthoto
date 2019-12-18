@@ -26,6 +26,14 @@ Page({
         background: 'url("http://static.jsososo.com/bmob-cdn-20716.b0.upaiyun.com/2018/10/29/a516340a402e93ea8025fe0eb6f2f080.png") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
       },
       {
+        type: 'crop',
+        background: 'url("crop.png") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
+      },
+      {
+        type: 'text',
+        background: 'url("text.png") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
+      },
+      {
         type: 'clear',
         background: 'url("http://static.jsososo.com/bmob-cdn-20716.b0.upaiyun.com/2018/10/29/466bf6bb400574cf805fdb2fd715caa1.png") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
       },

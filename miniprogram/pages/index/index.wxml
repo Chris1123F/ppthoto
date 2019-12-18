@@ -13,6 +13,7 @@
     </view>
   
   </view>
+  
   <view class="user-nav">
     <view class="nav-group">
     <view class="nav-item">
@@ -31,6 +32,12 @@
         <navigator url="../fans/fans">
           <image class="nav-icon" mode="widthFix" src="../../images/fans.png"></image>
           <text>粉丝</text>
+        </navigator>
+      </view>
+      <view class="nav-item">
+        <navigator url="../publish/publish">
+          <image class="nav-icon" mode="widthFix" src="../../images/fans.png"></image>
+          <text>发布</text>
         </navigator>
       </view>
     </view>
