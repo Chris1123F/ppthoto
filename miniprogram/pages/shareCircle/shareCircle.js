@@ -14,6 +14,7 @@ Page({
     popTop: 0, //弹出点赞评论框的位置
     popWidth: 0, //弹出框宽度
     isShow: true, //判断是否显示弹出框
+    releaseFocus: false
   },
   onLoad() {
     const self = this
@@ -173,6 +174,7 @@ Page({
   },
 
   star:function(){
+    const self = this
     wx.cloud.callFunction({
       // 云函数名称
       name: 'star',
@@ -186,20 +188,23 @@ Page({
         wx.showToast({
           title: '点赞成功',
         })
+        var animation = wx.createAnimation({
+          duration: 300,
+          timingFunction: 'linear',
+          delay: 0,
+        })
+        self.setData({
+          popWidth: 0,
+          isShow: true,
+        })
+        self.onShow()
       },
       fail: console.error
     })
-    var animation = wx.createAnimation({
-      duration: 300,
-      timingFunction: 'linear',
-      delay: 0,
-    })
-    this.setData({
-      popWidth: 0,
-      isShow: false,
-    })
+    
   },
   unStar: function () {
+    const self = this
     wx.cloud.callFunction({
       // 云函数名称
       name: 'unstar',
@@ -213,17 +218,23 @@ Page({
         wx.showToast({
           title: '取消点赞成功',
         })
+        var animation = wx.createAnimation({
+          duration: 300,
+          timingFunction: 'linear',
+          delay: 0,
+        })
+        self.setData({
+          popWidth: 0,
+          isShow: true,
+        })
+        self.onShow()
       },
       fail: console.error
     })
-    var animation = wx.createAnimation({
-      duration: 300,
-      timingFunction: 'linear',
-      delay: 0,
-    })
+  },
+  comment:function(){
     this.setData({
-      popWidth: 0,
-      isShow: false,
+      releaseFocus: true
     })
   }
 })
