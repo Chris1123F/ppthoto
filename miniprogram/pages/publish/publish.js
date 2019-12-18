@@ -1,6 +1,10 @@
 const app = getApp();
 Page({
   data: {
+    openid:'',
+    userInfo:{},
+    avatarUrl: './user-unlogin.png',
+
     edit:false,
     formData:{
       title:'',
@@ -10,6 +14,30 @@ Page({
   },
   onLoad (option) {
     const self = this;
+
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+          wx.getUserInfo({
+            success: res => {
+              this.setData({
+                avatarUrl: res.userInfo.avatarUrl,
+                userInfo: res.userInfo,
+                openid: res.openid
+              })
+            }
+          })
+          console.log(this.data.openid)
+        } else {
+
+          console.log("fail to auth pub")
+        }
+      },
+      fail: res => {
+        console.log("fail to get setting pub")
+      }
+    })
     
   },
   titleInput(e){
@@ -54,7 +82,7 @@ Page({
         showCancel:false,
       })
     }else{
-      const sendData = { formData, date:new Date(),icon:'',openID:'',username:''};
+      const sendData = { formData, date:new Date(),icon:this.data.avatarUrl,openID:this.data.openid,username:this.data.userInfo.nickName};
 
       //上传到数据库
       console.log(sendData)
