@@ -6,17 +6,12 @@
     "pages/shareCircle/shareCircle",
     "pages/modifyPhoto/modify",
     "pages/follow/follow",
-<<<<<<< HEAD
-    "pages/fans/fans"
-=======
     "pages/fans/fans",
     "pages/splicePhoto/splice",
     "pages/spliceMenu/spliceMenu",
     "pages/emotionChoose/emotionChoose",
     "pages/emotionEdit/emotionEdit",
     "pages/publish/publish"
-
->>>>>>> 4a9d4f91547a662583913d9d5bc3ca1a406bd66b
   ],
   "window": {
     "backgroundColor": "#ffa000",
