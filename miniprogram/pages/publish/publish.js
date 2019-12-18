@@ -10,22 +10,7 @@ Page({
   },
   onLoad (option) {
     const self = this;
-    if (option.id){
-      wx.request({
-        url: `${app.host}/photo/api/gallery/modify/${option.id}`,
-        success(res){
-          self.setData({
-            edit : true,
-            formData : {
-              _id: res.data.detail['_id'],
-              title: res.data.detail.title,
-              desc: res.data.detail.desc,
-              photos: res.data.detail.photos
-            }
-          })
-        }
-      })
-    }
+    
   },
   titleInput(e){
     this.setData({
