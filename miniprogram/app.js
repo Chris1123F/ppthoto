@@ -15,7 +15,6 @@ App({
       })
     }
 
-
     this.globalData.myDevice = wx.getSystemInfoSync()
 
     for (var i = 0; i < 156; i++) {
@@ -27,5 +26,6 @@ App({
      userInfo: null,
     myDevice: null,
     imgUrl: [],
+    recordPoints: []
    }
 })
