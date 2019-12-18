@@ -5,6 +5,7 @@
       indexOf: false
     }
     result.indexOf = arr.indexOf(arg) > -1;
+    console.log(result.indexOf)
     return result;
   }
   module.exports.fn = fn;
@@ -29,16 +30,18 @@
         </view>
         <!-- 图片 -->
         <view class='photo-view'>
-          <view class='photo' wx:for='{{groupItem.photo}}' wx:for-item="item" wx:key="unique" wx:keystyle='width:{{photoWidth}}px;height:{{photoWidth}}px'>
-            <image bindtap='LookPhoto' data-photUrl='{{item}}' src='{{item}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px'></image>
+          <view class='photo' wx:for='{{groupItem.photo}}' wx:for-item="item" wx:key="unique" style='width:{{photoWidth}}px;height:{{photoWidth}}px'>
+            <image src='{{item}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px'></image>
           </view>
         </view>
-        <!-- 时间、删除按钮、点赞评论按钮 -->
-        <view class='TDD-view'>
+
+        <!--  时间、删除按钮、点赞评论按钮 -->
+        <view class='A-view'>
           <label>{{groupItem.date}}</label>
           <button bindtap='delete'>删除</button>
-          <image data-isShow='{{isShow}}' data-_id ='{{groupItem._id}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'></image>
-        </view>
+          <image data-_id ='{{groupItem._id}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'>
+          </image>
+        </view> 
 
         <!-- 点赞 -->
         <view class='zan-view'>
@@ -52,11 +55,12 @@
               <label bindtap='TouchZanUser' data-name='{{item}}' class='zan-user'>{{item}},</label>
             </view>
           </view>
+
           <view class='line'></view>
           <!-- 评论 -->
           <view class='discuss-view'>
             <view class='discuss' wx:for='{{groupItem.comments}}' wx:for-item="item" wx:key="unique">
-              <label bindtap='TouchZanUser' data-name='{{item.username}}' class='discuss-user'>{{item.username}}：</label>
+              <label class='discuss-user'>{{item.username}}：</label>
               <label class='content'>{{item.comment}}</label>
             </view>
           </view>

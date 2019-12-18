@@ -29,6 +29,7 @@ page{
 
 .right-view{
   /* background: red; */
+  width: 100%
 }
 
 /* 头像 */
@@ -73,39 +74,30 @@ page{
   margin-top: 10rpx;
 }
 
-/* 地理位置 */
-.user-address-view{
-  display: flex;
-  margin-top: 20rpx;
-  width: 100%;
-}
-.user-address-view label{
-  font-size: 12px;
-  margin: 10rpx;
-}
 
 /* 时间、删除、点赞评论 */
-.TDD-view{
+.A-view{
   width: 100%;
   height: 60rpx;
   display: flex;
   align-items: center;
   background: white;
 }
-.TDD-view label{
+.A-view label{
   font-size: 13px;
   margin-left: 10rpx;
 }
-.TDD-view button{
+.A-view button{
+  position: relative;
   font-size: 13px;
   margin-left: 20rpx;
   color: black;
   background: white;
 }
-.TDD-view button::after{
+.A-view button::after{
   border: white;
 }
-.TDD-view image{
+.A-view image{
   width: 50rpx;
   height: 40rpx;
   margin-right: 20rpx;
@@ -154,7 +146,7 @@ page{
 
 .line{
   width: 97%;
-  height: 1px;
+  height: 2px;
   background: white;
 }
 

@@ -22,7 +22,6 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2",
   "tabBar": {
     "color": "#a9b7b7" ,
     "selectedColor": "#ffa000",
