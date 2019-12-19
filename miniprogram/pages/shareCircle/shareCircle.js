@@ -15,7 +15,8 @@ Page({
     popWidth: 0, //弹出框宽度
     isShow: true, //判断是否显示弹出框
     releaseFocus: false,
-    text:''
+    text:'',
+    star:[]
   },
   onLoad() {
     const self = this
@@ -123,7 +124,8 @@ Page({
         popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
         popWidth: 0,
         isShow: true,
-        _id: e.target.dataset._id
+        _id: e.target.dataset._id,
+        star:e.target.dataset.star
       })
 
       // 0.3秒后滑动
@@ -146,7 +148,8 @@ Page({
         popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
         popWidth: 0,
         isShow: false,
-        _id: e.target.dataset._id
+        _id: e.target.dataset._id,
+        star: e.target.dataset.star
       })
     }
   },
