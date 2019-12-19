@@ -5,6 +5,8 @@
     "pages/photo/photo",
     "pages/shareCircle/shareCircle",
     "pages/modifyPhoto/modify",
+    "pages/cropPhoto/index",
+    "pages/cutFace/index",
     "pages/follow/follow",
     "pages/fans/fans",
     "pages/splicePhoto/splice",

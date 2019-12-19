@@ -27,11 +27,7 @@ Page({
       },
       {
         type: 'crop',
-        background: 'url("crop.png") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
-      },
-      {
-        type: 'text',
-        background: 'url("text.png") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
+        background: 'url("/images/crop.svg") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
       },
       {
         type: 'clear',

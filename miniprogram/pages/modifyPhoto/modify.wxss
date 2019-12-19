@@ -1,6 +1,6 @@
 /* painting-2.wxss */
 page {
-  background: rgba(153, 204, 255, 0.1);
+  background: #ffe3b3;
 }
 
 .failText {
