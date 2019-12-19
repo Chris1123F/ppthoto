@@ -83,17 +83,10 @@ function tapBtn(e, _this, pageType) {
       return;
     // 裁剪
     case 'crop':
-      if (pageType === 1) {
-        c.canvasHeight = (!_this.data.color) ? 205 + _this.data.w : 50;
-        if (_this.data.pageType === 'whiteBoard') {
-          c.canvasHeight += 64;
-        }
-      } else if (pageType === 2) {
-        c.canvasHeightLen = (!_this.data.color) ? Math.min(_this.data.canvasHeight, _this.data.windowHeight - _this.data.w - 205) : 0;
-      }
+      c.canvasHeight -= 2;
+      c.canvasWidth -= 2;
       _this.setData({
         width: false,
-        color: !_this.data.color,
         clear: false,
         ...c,
       });
