@@ -59,7 +59,7 @@ Page({
       sourceType: ['album', 'camera'],
       success: function (res) {
         var filePath = res.tempFilePaths[0];
-        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        const cloudPath = 'my-image' +JSON.stringify(new Date())+ filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
