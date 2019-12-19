@@ -34,7 +34,7 @@
         <!--  时间、删除按钮、点赞评论按钮 -->
         <view class='A-view'>
           <label>{{groupItem.date}}</label>
-          <button bindtap='delete' data-_id="{{groupItem._id}}">删除</button>
+          <button ></button>
           <image data-_id ='{{groupItem._id}}' data-star='{{groupItem.star}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'>
           </image>
         </view> 

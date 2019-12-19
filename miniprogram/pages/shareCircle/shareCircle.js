@@ -169,26 +169,6 @@ Page({
     })
   },
 
-  // 删除朋友圈
-  delete: function (e) {
-    console.log(e)
-    const self = this
-    wx.cloud.callFunction({
-      // 云函数名称
-      name: 'deleteShare',
-      // 传给云函数的参数
-      data: {
-        _id: e.currentTarget.dataset._id,
-      },
-      success: function (res) {
-        wx.showToast({
-          title: '删除成功',
-        })
-        self.onShow()
-      }
-    })
-  },
-
   star:function(){
     const self = this
     wx.cloud.callFunction({
