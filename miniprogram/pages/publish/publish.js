@@ -1,6 +1,7 @@
 const app = getApp();
 Page({
   data: {
+    count:0,
     openid:'',
     userInfo:{},
     avatarUrl: './user-unlogin.png',
@@ -59,14 +60,14 @@ Page({
       sourceType: ['album', 'camera'],
       success: function (res) {
         var filePath = res.tempFilePaths[0];
-        const cloudPath = 'my-image' +JSON.stringify(new Date())+ filePath.match(/\.[^.]+?$/)[0]
+        const cloudPath =  'myimage'+JSON.stringify(new Date().valueOf())+filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
           success: res => {
             console.log('[上传文件] 成功：', res)
             self.setData({
-              'formData.photos': self.data.formData.photos.concat(res.fileID)
+              'formData.photos': self.data.formData.photos.concat(res.fileID),
             })
           },
           fail: e => {
