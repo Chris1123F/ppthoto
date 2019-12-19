@@ -17,7 +17,7 @@
   <view class="user-nav">
     <view class="nav-group">
     <view class="nav-item">
-        <navigator url="../gallery/gallery">
+        <navigator url="../space/space">
           <image class="nav-icon" mode="widthFix" src="../../images/gallery.png"></image>
           <text>个人空间</text>
         </navigator>

@@ -1,0 +1,285 @@
+/* miniprogram/pages/space/space.wxss */
+/* pages/CircleFriends/CircleFriends.wxss */
+page{
+  background-color:  #ffd999;
+}
+
+.page{
+  width: 100%;
+  /* overflow-x: hidden */
+}
+
+/* 列表 */
+.CircleList{
+  padding: 20rpx;
+  
+  background: white;
+  margin-bottom: 1px;
+  border-bottom: 1px solid whitesmoke;
+  border-top: 1px solid whitesmoke;
+}
+
+.body-view{
+  display: flex;
+}
+
+.left-view{
+  width: 150rpx;
+  /* background: rebeccapurple; */
+}
+
+.right-view{
+  /* background: red; */
+  width: 100%
+}
+
+/* 头像 */
+.user-icon{
+  /* display: flex; */
+  width:100rpx;
+  height: 100rpx;
+  margin-left: 20rpx;
+  margin-top: 30rpx;
+  margin-right: 20rpx;
+}
+
+/* 昵称 */
+.user-name{
+  display: flex;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 18px;
+  color: rgb(88, 103, 138);
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+}
+
+/* 内容 */
+.user-content{
+  display: flex;
+  font-size: 18px;
+  line-height: 50rpx;
+  margin-left: 10rpx;
+}
+
+/* 图片 */
+.photo-view{
+  background: rebeccapurple;
+  margin-left: 10rpx;
+  margin-bottom: 20rpx;
+}
+.photo{
+  background: rgb(255, 166, 0);  
+  float: left;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+}
+
+
+/* 时间、删除、点赞评论 */
+.A-view{
+  width: 100%;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  background: white;
+}
+.A-view label{
+  font-size: 13px;
+  margin-left: 10rpx;
+}
+.A-view button{
+  position: relative;
+  font-size: 13px;
+  margin-left: 20rpx;
+  color: black;
+  background: white;
+}
+.A-view button::after{
+  border: white;
+}
+.A-view image{
+  width: 50rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+/* 点赞 */
+.zan-view {
+  width: 100%;
+  background: white;
+  margin-bottom: 20rpx;
+}
+.trigon-view{
+  /* height: 20rpx; */
+  margin-bottom: -15rpx;
+}
+.trigon{
+  display: flex;
+  width: 40rpx;
+  height: 20rpx;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+}
+.zan-bg-view{
+  display: inline-block;
+  width: 97%;
+  background: rgb(235, 235, 235);
+  margin-right: 20rpx;
+  margin-bottom: -11rpx;
+  border-top-left-radius: 7rpx;
+  border-top-right-radius: 7rpx;
+}
+.zan-user-view{
+  display: flex;
+  float: left;
+  height: 40rpx;
+  margin-left: 10rpx;
+  /* margin-top: 5rpx; */
+  align-content: center;
+}
+.zan-user{
+  font-size: 12px;
+  line-height: 40rpx;
+  height: 40rpx;
+  color: rgb(88, 103, 138);
+}
+
+.line{
+  width: 97%;
+  height: 2px;
+  background: white;
+}
+
+/* 评论 */
+.discuss-view{
+  background: white;
+  width: 97%;
+}
+
+.discuss{
+  background: rgb(235, 235, 235);
+  line-height: 35rpx;
+}
+
+.discuss label{
+  font-size: 12px;
+}
+
+.discuss-user{
+  color: rgb(88, 103, 138);
+  margin-left: 10rpx;
+}
+
+.content{
+  margin-left: 10rpx;
+}
+
+/* 弹出框 */
+.pop-up-box{
+  position: absolute;
+  height: 60rpx;
+  border-radius: 10rpx;
+  right: 90rpx;
+  background: rgba(252, 250, 250, 0.7)
+}
+
+.dianzan
+{
+  position:absolute;
+  width:120rpx;
+  border-right: 1px solid #ccc;
+  top:5rpx;
+  left:0;
+  text-align:center;
+}
+
+/*点赞*/
+.dianzan-box
+{
+  width:600rpx;
+  height:auto;
+  margin-left:110rpx;
+  background:#F3F3F5;
+  border-bottom: 1px solid #ccc;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+/*评论*/
+.pinglun
+{
+  position:absolute;
+  width:120rpx;
+  border-left: 1px solid #ccc;
+  right:0;
+  top:5rpx;
+  text-align:center;
+}
+
+.pinglun-box
+{
+  width:600rpx;
+  height:auto;
+  margin-left:110rpx;
+  background:#F3F3F5;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.pinglun-one
+{
+  /*border-bottom: 1px solid #ccc;*/
+  padding-bottom:5rpx;
+}
+
+.pinglun-nickname
+{
+  color:#576b95;
+  font-size:10pt;
+   margin-left: 15rpx;
+}
+
+.pinglun-content
+{
+  color:#000;
+  font-size:10pt;
+}
+
+.input_null{
+    color: #C9C9C9;
+}
+
+.release{
+    display: flex;
+    align-items: flex-end; /*底部对齐*/
+    justify-content: space-between; /*两端对齐*/
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 18rpx 0 18rpx 30rpx;
+    background-color: #F7F8F7;
+    font-size: 28rpx;
+    z-index: 999;
+}
+.release .text{
+    width: 604rpx;
+    min-height: 34rpx;
+    max-height: 102rpx; /*最多显示三行*/
+    border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
+    border-style: solid;
+    border-color:  #ffffff;
+    line-height: 34rpx;
+    font-size: 28rpx;
+    background-color: #ffffff;
+    border-radius: 4rpx;
+}
+.release .submit{
+    width: 116rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    text-align: center;
+    color: #66CC00;
+}

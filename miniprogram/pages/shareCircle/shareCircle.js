@@ -170,9 +170,22 @@ Page({
   },
 
   // 删除朋友圈
-  delete: function () {
-    wx.showToast({
-      title: '删除成功',
+  delete: function (e) {
+    console.log(e)
+    const self = this
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'deleteShare',
+      // 传给云函数的参数
+      data: {
+        _id: e.currentTarget.dataset._id,
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '删除成功',
+        })
+        self.onShow()
+      }
     })
   },
 
@@ -268,6 +281,12 @@ Page({
         self.onShow()
       },
       fail: console.error
+    })
+  },
+  follow:function(e){
+    console.log(e)
+    wx.redirectTo({
+      url: '../freeattention/attention?fromID=' + app.globalData.openid + '&toID=' + e.currentTarget.dataset.item.openID + '&fromName=' + this.data.userInfo.nickName + '&toName=' + e.currentTarget.dataset.item.username + '&avatarUrl=' + e.currentTarget.dataset.item.icon
     })
   }
 })

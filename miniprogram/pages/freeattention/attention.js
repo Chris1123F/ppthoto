@@ -17,7 +17,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function (e) {
+  onLoad: function (e) {
+    console.log(e)
     const self = this
     self.setData({
       fromID: e.fromID,
@@ -48,10 +49,14 @@ Page({
       }
     })
   },
-
+  onShow(){
+    this.setData({
+      isFollow: !this.data.isFollow
+    })
+  },
   changeStatus(){
     const self = this
-    if(isFollow){
+    if(this.data.isFollow){
       wx.cloud.callFunction({
         name: "unfollow",
         data: {

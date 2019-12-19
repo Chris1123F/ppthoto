@@ -6,7 +6,7 @@ cloud.init()
 // 云函数入口函数
 exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
-  const db=wx.cloud.database()
+  const db=cloud.database()
   const galary=[]
   db.collection('share').where({
     openID: context.OPENID

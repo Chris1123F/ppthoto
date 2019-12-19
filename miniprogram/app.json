@@ -11,7 +11,9 @@
     "pages/spliceMenu/spliceMenu",
     "pages/emotionChoose/emotionChoose",
     "pages/emotionEdit/emotionEdit",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "pages/freeattention/attention",
+    "pages/space/space"
   ],
   "window": {
     "backgroundColor": "#ffa000",
@@ -22,7 +24,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-    "color": "#a9b7b7" ,
+    "color": "#a9b7b7",
     "selectedColor": "#ffa000",
     "list": [
       {

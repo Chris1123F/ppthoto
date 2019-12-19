@@ -1,3 +1,4 @@
+<!--miniprogram/pages/space/space.wxml-->
 <!-- 仿微信朋友圈 -->
 <wxs module="share">
   function fn(arr, arg) {
@@ -35,8 +36,6 @@
         <view class='A-view'>
           <label>{{groupItem.date}}</label>
           <button bindtap='delete' data-_id="{{groupItem._id}}">删除</button>
-          <image data-_id ='{{groupItem._id}}' data-star='{{groupItem.star}}' bindtap='TouchDiscuss' src='/images/wxdiscuss.png'>
-          </image>
         </view> 
 
         <!-- 点赞 -->
@@ -63,32 +62,7 @@
         </view>
       </view>
     </view>
-      <!-- 评论按钮弹出框 -->
-    <view animation="{{animation}}" class='pop-up-box' style='top:{{popTop}}px;width: {{popWidth}}px;'>
-      <view hidden="{{isShow}}">
-        <text class="dianzan" bindtap="unStar" 
-        hidden="{{!share.fn(star,userInfo.nickName)}}">取消点赞</text>
-        <text class="dianzan" bindtap="star" 
-        hidden="{{share.fn(star,userInfo.nickName)}}">点赞</text> 
-      </view>
-      <view>
-          <text class="pinglun" bindtap="comment" hidden="{{isShow}}">评论</text>
-      </view>
-    </view>
-    <form bindsubmit="bindFormSubmit">
-      <view class="release" hidden="{{!releaseFocus}}">
-        <textarea class="text"
-              fixed="{{true}}" 
-              show-confirm-bar = "{{false}}" 
-              cursor-spacing="15" 
-              auto-height
-              value="{{text}}" 
-              focus="{{releaseFocus}}"
-              placeholder="回复" 
-              name="textarea"></textarea>
-        <button class="submit" form-type="submit" data-_id ='{{groupItem._id}}'>发送</button>
-      </view>
-    </form>
   </view>
 </scroll-view>
+
 
