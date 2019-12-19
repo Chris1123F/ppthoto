@@ -27,7 +27,7 @@ Page({
       },
       {
         type: 'crop',
-        background: 'url("/images/crop.svg") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
+        background: 'url("https://www.easyicon.net/download/png/1189383/200/") white no-repeat; background-size: 18px 18px;background-position: 3px 3px;'
       },
       {
         type: 'clear',
