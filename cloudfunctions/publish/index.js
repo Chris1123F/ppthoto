@@ -15,7 +15,7 @@ exports.main = async (event, context) => {
         content: event.sendData.formData.desc,
         date: event.sendData.date,
         icon:event.sendData.icon,
-        openID:'',
+        openID:event.sendData.openID,
         photo:event.sendData.formData.photos,
         shareID:JSON.stringify(count+1),
         star:[],

@@ -58,9 +58,24 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        var tempFilePaths = res.tempFilePaths;
-        self.setData({
-          'formData.photos':self.data.formData.photos.concat(tempFilePaths)
+        var filePath = res.tempFilePaths[0];
+        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+          success: res => {
+            console.log('[上传文件] 成功：', res)
+            self.setData({
+              'formData.photos': self.data.formData.photos.concat(res.fileID)
+            })
+          },
+          fail: e => {
+            console.error('[上传文件] 失败：', e)
+            wx.showToast({
+              icon: 'none',
+              title: '上传失败',
+            })
+          }
         })
       }
     })
@@ -82,7 +97,7 @@ Page({
         showCancel:false,
       })
     }else{
-      const sendData = { formData, date:new Date(),icon:this.data.avatarUrl,openID:this.data.openid,username:this.data.userInfo.nickName};
+      const sendData = { formData, date:new Date(),icon:this.data.avatarUrl,openID:app.globalData.openid,username:this.data.userInfo.nickName};
 
       //上传到数据库
       console.log(sendData)
@@ -93,6 +108,9 @@ Page({
         },
         success: res => {
           console.log("publish success")
+          wx.switchTab({
+            url: '../shareCircle/shareCircle',
+          })
         },
         fail: err => {
           console.log(err)
