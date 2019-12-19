@@ -14,7 +14,9 @@ Page({
     popTop: 0, //弹出点赞评论框的位置
     popWidth: 0, //弹出框宽度
     isShow: true, //判断是否显示弹出框
-    releaseFocus: false
+    releaseFocus: false,
+    text:'',
+    star:[]
   },
   onLoad() {
     const self = this
@@ -111,7 +113,6 @@ Page({
   TouchDiscuss: function (e) {
     // this.data.isShow = !this.data.isShow
     // 动画
-    console.log(e)
     var animation = wx.createAnimation({
       duration: 300,
       timingFunction: 'linear',
@@ -123,7 +124,8 @@ Page({
         popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
         popWidth: 0,
         isShow: true,
-        _id: e.target.dataset._id
+        _id: e.target.dataset._id,
+        star:e.target.dataset.star
       })
 
       // 0.3秒后滑动
@@ -146,7 +148,8 @@ Page({
         popTop: e.target.offsetTop - (e.detail.y - e.target.offsetTop) / 2,
         popWidth: 0,
         isShow: false,
-        _id: e.target.dataset._id
+        _id: e.target.dataset._id,
+        star: e.target.dataset.star
       })
     }
   },
@@ -167,9 +170,22 @@ Page({
   },
 
   // 删除朋友圈
-  delete: function () {
-    wx.showToast({
-      title: '删除成功',
+  delete: function (e) {
+    console.log(e)
+    const self = this
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'deleteShare',
+      // 传给云函数的参数
+      data: {
+        _id: e.currentTarget.dataset._id,
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '删除成功',
+        })
+        self.onShow()
+      }
     })
   },
 
@@ -184,7 +200,6 @@ Page({
         username:this.data.userInfo.nickName
       },
       success: function (res) {
-        console.log(res) // 3
         wx.showToast({
           title: '点赞成功',
         })
@@ -214,7 +229,6 @@ Page({
         username: this.data.userInfo.nickName
       },
       success: function (res) {
-        console.log(res) // 3
         wx.showToast({
           title: '取消点赞成功',
         })
@@ -233,8 +247,46 @@ Page({
     })
   },
   comment:function(){
+    var animation = wx.createAnimation({
+      duration: 300,
+      timingFunction: 'linear',
+      delay: 0,
+    })
     this.setData({
+      isShow:true,
+      popWidth: 0,
       releaseFocus: true
+    })
+  },
+  bindFormSubmit:function(e){
+    console.log(e)
+    const self = this
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'comment',
+      // 传给云函数的参数
+      data: {
+        _id: this.data._id,
+        username: this.data.userInfo.nickName,
+        comment:e.detail.value.textarea
+      },
+      success: function (res) {
+        wx.showToast({
+          title: '评论成功',
+        })
+        self.setData({
+          text: "",
+          releaseFocus: false
+        })
+        self.onShow()
+      },
+      fail: console.error
+    })
+  },
+  follow:function(e){
+    console.log(e)
+    wx.redirectTo({
+      url: '../freeattention/attention?fromID=' + app.globalData.openid + '&toID=' + e.currentTarget.dataset.item.openID + '&fromName=' + this.data.userInfo.nickName + '&toName=' + e.currentTarget.dataset.item.username + '&avatarUrl=' + e.currentTarget.dataset.item.icon
     })
   }
 })

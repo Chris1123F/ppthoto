@@ -7,8 +7,8 @@
       size="default"></image>
       <view class="userinfo-all">
         <text class="userinfo-nickname">{{toName}}</text>
-        <button bindtap="changeStatus">{{isFollow ? "取消关注" : "关注"}}</button>
       </view>
+      <view bindtap="changeStatus">{{isFollow ? "取消关注" : "关注"}}</view>
     </view>
   </view>
 </view>
