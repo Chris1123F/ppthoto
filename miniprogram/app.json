@@ -4,6 +4,7 @@
     "pages/userConsole/userConsole",
     "pages/photo/photo",
     "pages/shareCircle/shareCircle",
+    "pages/modifyMenu/modifyMenu",
     "pages/modifyPhoto/modify",
     "pages/cropPhoto/index",
     "pages/cutFace/index",

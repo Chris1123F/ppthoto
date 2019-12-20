@@ -81,11 +81,6 @@ function tapBtn(e, _this, pageType) {
         ...c,
       });
       return;
-    // 裁剪按钮
-    case 'crop':
-      wx.navigateTo({
-        url: '../cropPhoto/index'
-      })
       return;
     // 清空按钮
     case 'clear':
